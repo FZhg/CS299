@@ -1,1 +1,2 @@
 # CS299
+Regrading recent busy schedules, I decide make my road to data science and machine learning more agile. Yes, for the next two months, I will try the scrum agile project management frameowrk for my coding pset. Hope me good luck~!
