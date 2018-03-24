@@ -181,14 +181,6 @@
 \newcommand{\p}[1]{p(#1)}
 \newcommand{\abs}[1]{|#1|}
 \newcommand{\1}[1]{1\{#1\}}
-\newcommand{\equations}[1]{
-	\begin{equation}
-	     \begin{split}
-	     #1
-	     \end{split}
-	\end{equation}
-}
-\newcommand{\upi}[1]{#1^{(i)}}
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -325,170 +317,20 @@ The possion distribution, $p(y; \lambda) = \frac{e^{-\lambda} \lambda^y}{y!} = \
          \end{equation}
          Campared with $exp(-\theta^Tx + \theta_0)$, we can get
          $$ \theta = \frac{\mu_1 - \mu{-1}}{\Sigma}, $$\par
-         $$ \theta_0 = log(\frac{1-\phi}{\phi})  - \frac{\mu_{-1}^2 - {\mu_1}^2}{2 \Sigma} $$
+         $$ \theta_0 = log(\frac{1-\phi}{\phi})  - \frac{\mu_{-1}^2 - \mu_1^2}{2 \Sigma} $$
          Since the fraction is just the inverse in case y = -1, so the form satisfies in both case;
-         q.e.d.
+         q.e.d。
 
     \subsection{3(b) \& 3(c)}
-         Our goal  \footnote{I got this section down by referrencing \url{http://web.engr.oregonstate.edu/~xfern/classes/cs534/notes/LDA.pdf}}is to perform log-likelyhood maximum estimation on the log-likelyhood. By Bayes's rule\footnote{\1{y = i} is the notation introduced in the lecture notes 1 page 27.}, 
+         Our goal  \footnote{I got this section down by referrencing\par \url{http://web.engr.oregonstate.edu/~xfern/classes/cs534/notes/LDA.pdf}}is to perform log-likelyhood maximum estimation on the log-likelyhood. By Bayes's rule, 
          \begin{equation}
          	\begin{split}
          		 & l(\phi, \mu_1, \mu_{-1}, \Sigma) \\
          		 &= log\prod_{i =1} ^m \p{x^{(i)}|y^{(i)}; \mu_{-1}, \mu_1, \Sigma}\cdot \p{y^{(i)}} \\
-         		 &= \sum_{i = 1}^{m} log\{ [\phi \cdot N(x^{(i)}|\mu_1, \Sigma)]^{\1{y^{(i)} = 1}}  \cdot   [(1-\phi)\cdot N(x^{(i)}|\mu_{-1}, \Sigma)]^{\1{y^{(i)} = -1}}\} \\
-			 &= \sum_{i = 1}^m \{ \1{y^{(i)} = 1}log\phi +  \1{y^{(i)} = 1} logN(x^{(i)}|\mu_1, \Sigma) + \1{y^{(i)} = -1}log(1-\phi) +  \1{y^{(i)} = -1}logN(x^{(i)}|\mu_{-1}, \Sigma) \}
+         		\footnote{\1{y = i} is the notation introduced in the lecture notes 1 page 27.} &= \sum_{i = 1}^{m} log\{ [\phi \cdot N(x^{(i)}|\mu_1, \Sigma)]^{\1{y^{(i)} = 1}}  \cdot   [(1-\phi)\cdot N(x^{(i)}|\mu_{-1}, \Sigma)]^{\1{y^{(i)} = -1}}\} \\
+         		 &= \sum_{i = 1}^m \{ y^{(i)} \}
          	\end{split}
          \end{equation}
-         Let's first estimate $\phi$ . Consider the parts that contains $\phi$, we have:
-         $$ \sum_{i = 1}^{m} [\1{y^{(i) = 1}} log\phi + \1{y^{(i)} = 1} log(1-\phi)]$$
-         Take the derivative over $\phi$:
-         $$ \sum_{i = 1}^{m} [\1{y^{(i) = 1}} \frac{1}{\phi} - \1{y^{(i)} = 1} \frac{1}{1-\phi}] $$
-         Setting it to zero, we have
-         $$ \phi =  \frac{\sum_{i = 1}^m \1{y^{(i)} = 1}}{\sum_{i = 1}^m \1{y^{(i)} = 1} + \sum_{i = 1}^m \1{y^{(i) = -1}}} $$
-         Since y = either 1 or -1, 
-         $$ \phi = \frac{1}{m}  \sum_{i = 1}^m \1{y^{(i)} = 1}$$
-
-         We now move onto estimating $\mu_1$ or $\mu_{-1}$. Since both have identical form, we only need to consider one  of mean vectors. Considering the parts contain $\mu_1$, we have:
-         \begin{equation}
-            \begin{split}
-             &  \sum_{i = 1}^m \1{y^{(i)} = 1} logN(x^{(i)}|\mu_1, \Sigma) \\
-             &= \sum_{i = 1}^m \1{y^{(i)} = 1} \frac{-1}{2} (x - \mu_1)^T \Sigma^{-1}(x - \mu_1) + const
-            \end{split}
-         \end{equation}
-         Take the derivative over $\mu_1$ and set it to zero, we have:
-         $$ \sum_{i = 1}^m \1{y^{(i)} = 1} \Sigma^{-1} (x^{(i)} - \mu_1)  = 0 $$
-         $$ \mu_1 = \frac{\sum_{i = 1}^m \1{y^{(i)} = 1} x^{(i)}}{\sum_{i = 1}^m \1{y^{(i)} = 1}} $$
-         Similiarly we have:
-         $$ \mu_{-1} = \frac{\sum_{i = 1}^m \1{y^{(i)} = -1} x^{(i)}}{\sum_{i = 1}^m \1{y^{(i)} = -1}} $$
-
-         Finally, we will estimate $\Sigma$. Taking the part that contains $\Sigma$ we have \footnote{To get A'BA = Tr(BA'A), in which A is a n $\times$ 1 vector and B is a $n \times n$ square matrix, A'BA = $\sum_{i =1}^n \sum_{j = 1}^nA_i B_{ij} A_j = \sum_{q = 1}^n  \sum_{p = 1}^n B_{xq} A_p A_x = Tr(B (A'A))$ .} :
-         \begin{equation}
-         	\begin{split}
-         		&  \sum_{i = 1}^m [\1{y^{(i)} = 1} logN(x^{(i)}|\mu_1, \Sigma) + \1{y^{(i)} = -1}logN(x^{(i)}|\mu_{-1}, \Sigma)] \\
-         		&= \sum_{i = 1}^m  [\1{y^{(i)} = 1} [\frac{(x - \mu_1)^T\Sigma^{-1}(x - \mu_1)}{-2} - \frac{1}{2} log|\Sigma|] + \1{y^{(i)} = -1}[\frac{(x - \mu_{-1})^T\Sigma^{-1}(x - \mu_{-1})}{-2} - \frac{1}{2} log|\Sigma|]] \\
-         		&= -\frac{m}{2}log|\Sigma|  - \frac{1}{2}\sum_{i = 1}^m\1{y^{(i)} = 1}Tr (\Sigma^{-1}((x^{(i)}- \mu_1)^T (x^{(i)}- \mu_1)) - \frac{1}{2}\sum_{i = 1}^m\1{y^{(i)} = -1}Tr (\Sigma^{-1}((x^{(i)}- \mu_{-1})^T (x^{(i)}- \mu_{-1})) \\
-         		&= -\frac{m}{2}log|\Sigma|  - \frac{m}{2}Tr (\frac{1}{m}\sum_{i = 1}^m\1{y^{(i)} = 1}\Sigma^{-1}((x^{(i)}- \mu_1)^T (x^{(i)}- \mu_1)) - \frac{m}{2}Tr (\sum_{i = 1}^m\1{y^{(i)} = -1}\Sigma^{-1}((x^{(i)}- \mu_{-1})^T (x^{(i)}- \mu_{-1})) \\
-         		&= -\frac{m}{2}log|\Sigma|  - \frac{m}{2}Tr (\Sigma^{-1}\frac{1}{m}(\sum_{i = 1}^m\1{y^{(i)} = 1}((x^{(i)}- \mu_1)^T (x^{(i)}- \mu_1) + \sum_{i = 1}^m\1{y^{(i)} = -1}((x^{(i)}- \mu_{-1})^T (x^{(i)}- \mu_{-1})) \\
-         	\end{split}
-         \end{equation}
-         Taking derivative over $\Sigma$ \footnote{To figure out how to take derivative of a determinant, I read the lecture notes, Matrix Cookbook,\url{https://www.ics.uci.edu/~welling/teaching/KernelsICS273B/MatrixCookBook.pdf} .} and set it to zero, we have：
-         $$ (\Sigma^{-1})^T +  \frac{1}{m}(\sum_{i = 1}^m\1{y^{(i)} = 1}((x^{(i)}- \mu_1)^T (x^{(i)}- \mu_1)) + \sum_{i = 1}^m\1{y^{(i)} = -1}((x^{(i)}\mu_{-1})^T (x^{(i)}- \mu_{-1})))^T ( - (\Sigma^{-1})^T)^2 = 0 $$
-         Thus, we can get $$\Sigma = \frac{1}{m} \sum_{i = 1}^m (x^{(i)} - \mu_{y^{(i)}})(x^{(i)} - \mu_{y^{(i)}})^T.$$
-
-
-\end{homeworkProblem}
-
-%----------------------------------------------------------------------------------------
-%       PROBLEM 4: LINEAR INVARIANCE OF OPTIMIZATION ALGORITHMS
-%----------------------------------------------------------------------------------------
-\begin{homeworkProblem}
-     \subsection{4(a)}
-         We will use induction to prove linear invariance of Newton's method. We already have $z^{(0)}= A^{-1}x^{(0)}$.
-         Applying Newton's method to function f, we can have
-         $$ x^{(i + 1)} = x^{(i)} - H^{-1} \nabla_x(x^{(i)})$$
-         Applying Newton's method to function g, we can have
-         $$ z^{(i + 1)} = z^{(i)} - H^{-1} \nabla_z(z^{(i)})$$
-         Assuming and substutting $z^{(i)} = A^{-1}x^{(i)}$, we have
-         $$  
-         	z^{(i + 1)} = A^{-1}x^{(i)} - H^{-1} \nabla_x(A^{-1}x^{(i)})  $$
-
-         	Here we prove that $\nabla_x(Ax) = A \nabla_x x, $as long as A is independent with x.
-         	Since $ {\nabla_x(Ax)}_p = \frac{\partial} {\partial x_p}\sum_{q =1}^n A_q A_p x_p = \sum_{q =1}^n A_q A_p  \frac{\partial} {\partial x_p}x_p = (A{\nabla_x(x)})_p $, we can prove our conclusion. The  similiar way for the hessian matrix can make it egligiable to move the constant matrix above the hessian.
-
-         	\equations{
-         	z^{(i + 1)} &= A^{-1}x^{(i)} - H^{-1} \nabla_x(A^{-1}x^{(i)})\\
-         	&= A^{-1}(x^{(i)} - H^{-1} \nabla_x(x^{(i)}))\\
-         	&= A^{-1}x^{(i + 1)}
-         	}
-         	q.e.d. Similiar procedure can be applied to gradient optimazition to prove its linear invariance.
-
-
-\end{homeworkProblem}
-
-%----------------------------------------------------------------------------------------
-%          PROBLEM 5: REGRESSION FOR DENOISING QUASAR SPECTRA
-%----------------------------------------------------------------------------------------
-\begin{homeworkProblem}
-     \subsection{5(a)}
-         \subsubsection{5(a), i}
-	         We want to prove $\frac{1}{2} \sum_{i =1}^m \upi{w}(\theta^T \upi{x} - \upi{y})^2 = (X\theta - \vec{y})^T W (X\theta - \vec{y}) $, we choose W is a diagonal matrix by $m\times m$,
-			     $$ W = 
-			          \begin{bmatrix}
-			             \frac{1}{2}w_{1}  & 0        & 0          & \dots   & 0 \\
-			             0                 & \frac{1}{2}w_{2}    & 0          & \dots   & 0 \\
-			             \vdots            & \vdots   & \vdots     & \ddots  & \vdots \\
-			             0                 & 0        &  0         & \dots   & \frac{1}{2}w_{m}
-			\end{bmatrix}
-			$$
-			     \equations{
-			        LHS &=  J(\theta)\\ &= \frac{1}{2} \sum_{i =1}^m \upi{w}(\theta^T \upi{x} - \upi{y})^2 \\
-			        RHS &= (X\theta - \vec{y})^T W (X\theta - \vec{y})^T \\
-			            &= [\dots \frac{1}{2}((\upi{x})^T \theta - \upi{y})w(i) \dots] \cdot 
-			            \begin{bmatrix}
-			            \dots \\
-			            ((\upi{x})^T \theta - \upi{y}) \\
-			            \dots \\
-			            \end{bmatrix}\\
-			            &= LHS\\ q.e.d
-			    }
-	    \subsubsection{5(a), ii}
-	        From i, we know that $ J(\theta) = (X\theta - \vec{y})^T W (X\theta - \vec{y}) $ under this weight setting.
-	        First, we will prove $\nabla_A (XA - Y)^TW  (XA - Y) = 2W(X\theta -  Y)X^T$, is W is symmetric.\\
-	        Taking the derivative of the cost funciton with respect to $\theta$, \footnote{$\nabla_A (XA - Y)^TW  (XA - Y) = 2W(X\theta -  Y)X^T$, I refer to Matrix Cookbook at https://www.ics.uci.edu/~welling/teaching/KernelsICS273B/MatrixCookBook.pdf}
-	        \equations{
-	        \nabla_\theta J(\theta) &= \nabla_\theta (X\theta - \vec{y})^T W (X\theta - \vec{y}) \\
-	                                &= \nabla_\theta (\theta^TX^TWX\theta - \theta^TX^TW\vec{y} - \vec{y}^TWX\theta + \vec{y}^TW\vec{y}) \\
-	                                &= \nabla_\theta Tr[\theta^TX^TWX\theta - \theta^TX^TW\vec{y} - \vec{y}^TWX\theta + \vec{y}^TW\vec{y}] \\
-	                                &= \nabla_\theta (Tr[\theta^TX^TWX\theta] - 2Tr[\vec{y}^TWX\theta]) \\
-	                                &= 2[X^TW^TX\theta - X^TW^T\vec{y}]
-	        }
-	        Setting it to zero, we have
-	        $$ \theta = (X^TW^TX )^{-1}X^TW^T\vec{y}$$
-	     \subsubsection{5(a), iii}
-	       \equations{
-		         l(\theta) &= log \prod_{i =1}^m\frac{1}{\sqrt{2 \pi} \upi{\sigma}} exp( - \frac{(\upi{y} - \theta^T \upi{x})^2}{ 2 (\upi{\sigma})^2} )\\
-		                   &= - \sum_{i = 1}^m \frac{1}{2(\upi{\sigma})^2} (\upi{y} - \theta^T \upi{x})) +z
-		        }
-		     So we only need to optimize the first term. Compared with cost function, we can get $\upi{w} = \frac{1}{2(\upi{\sigma})^2}$.
-	 \subsection{5(b)}
-	     \subsection{5(b), i}
-	     The optimized $\theta$ is $[2.513 -0.0009]^T$.
-	      	\begin{center}
-		        \includegraphics[width=0.75\columnwidth]{5b(i).png} % Example image
-		     \end{center}
-	     \subsection{5(b), ii}
-			 \begin{center}
-		        \includegraphics[width=0.75\columnwidth]{5b(ii).png} % Example image
-		     \end{center}
-	     \subsection{5(b), iii}
-			 \begin{center}
-		        \includegraphics[width=0.75\columnwidth, height = 0.75\pageheight]{5b(iii).png} % Example image
-		     \end{center}
-
-	    Below is the code for the section, 5(b),i,ii and iii. The function are seperated into another file for convienience.\par
-		\lstinputlisting{locally_weighted_regression_5b.m}
-		The function file for the section, 5(b),i,ii and iii is here. \par
-		\lstinputlisting{smoothLWR.m}
-
-	 \subsection{5(c)}
-	     \subsubsection{5(c), i}
-	         Below is the matlab code for the section 5c, i. The function file are listed in section 5(b).\par
-	         \lstinputlisting{SmoothDataSet.m}
-	     \subsubsection{5(c), ii}
-	     The average training error is  2.3084. \par
-	     The average test error is 2.1080. \par
-	     \subsection{5(c), iii}
-	     Plot for test example 1: \par
-	      	\begin{center}
-		        \includegraphics[width=0.75\columnwidth]{5c(iii)-testEx1.png} % Example image
-		     \end{center}
-		 Plot for test example 6: 
-	      	\begin{center}
-		        \includegraphics[width=0.75\columnwidth]{5c(iii)-testEx6.png} % Example image
-		     \end{center}
-
-		 Below  is the matlab code for the section 5c,ii and iii. \par
-	     \lstinputlisting{quasar_spectra_predict_5c.m}
 \end{homeworkProblem}
 
 %----------------------------------------------------------------------------------------
