@@ -1,0 +1,30 @@
+\BOOKMARK [1][-]{section*.2}{Problem 1}{}% 1
+\BOOKMARK [2][-]{section*.3}{1\(a\)}{section*.2}% 2
+\BOOKMARK [2][-]{section*.4}{1\(d\)}{section*.2}% 3
+\BOOKMARK [2][-]{section*.5}{1\(b\)}{section*.2}% 4
+\BOOKMARK [2][-]{section*.6}{1\(c\)}{section*.2}% 5
+\BOOKMARK [3][-]{section*.7}{i.Using a different constant learning rate}{section*.6}% 6
+\BOOKMARK [3][-]{section*.8}{ii.Decreasing the learning rate over time}{section*.6}% 7
+\BOOKMARK [3][-]{section*.9}{iii. Add a regularization term to the loss function.}{section*.6}% 8
+\BOOKMARK [3][-]{section*.10}{iv. linearly scale of input features}{section*.6}% 9
+\BOOKMARK [3][-]{section*.11}{v. Add zero-mean Gaussian noise to the training data or labels}{section*.6}% 10
+\BOOKMARK [1][-]{section*.12}{Problem 2}{}% 11
+\BOOKMARK [2][-]{section*.13}{a}{section*.12}% 12
+\BOOKMARK [2][-]{section*.14}{b}{section*.12}% 13
+\BOOKMARK [2][-]{section*.15}{c}{section*.12}% 14
+\BOOKMARK [1][-]{section*.16}{Problem 3}{}% 15
+\BOOKMARK [1][-]{section*.17}{Problem 4}{}% 16
+\BOOKMARK [2][-]{section*.18}{a}{section*.17}% 17
+\BOOKMARK [2][-]{section*.19}{b}{section*.17}% 18
+\BOOKMARK [2][-]{section*.20}{c}{section*.17}% 19
+\BOOKMARK [2][-]{section*.21}{d}{section*.17}% 20
+\BOOKMARK [2][-]{section*.22}{e}{section*.17}% 21
+\BOOKMARK [2][-]{section*.23}{f}{section*.17}% 22
+\BOOKMARK [2][-]{section*.24}{g}{section*.17}% 23
+\BOOKMARK [2][-]{section*.25}{h}{section*.17}% 24
+\BOOKMARK [1][-]{section*.26}{Problem 5}{}% 25
+\BOOKMARK [1][-]{section*.27}{Problem 6}{}% 26
+\BOOKMARK [2][-]{section*.28}{b}{section*.27}% 27
+\BOOKMARK [3][-]{section*.29}{c}{section*.28}% 28
+\BOOKMARK [3][-]{section*.30}{d}{section*.28}% 29
+\BOOKMARK [2][-]{section*.31}{e}{section*.27}% 30

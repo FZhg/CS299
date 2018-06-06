@@ -1,0 +1,30 @@
+\contentsline {section}{Problem 1}{2}{section*.2}
+\contentsline {subsection}{1(a)}{2}{section*.3}
+\contentsline {subsection}{1(d)}{3}{section*.4}
+\contentsline {subsection}{1(b)}{3}{section*.5}
+\contentsline {subsection}{1(c)}{5}{section*.6}
+\contentsline {subsubsection}{i.Using a different constant learning rate}{5}{section*.7}
+\contentsline {subsubsection}{ii.Decreasing the learning rate over time}{5}{section*.8}
+\contentsline {subsubsection}{iii. Add a regularization term to the loss function.}{6}{section*.9}
+\contentsline {subsubsection}{iv. linearly scale of input features}{7}{section*.10}
+\contentsline {subsubsection}{v. Add zero-mean Gaussian noise to the training data or labels}{7}{section*.11}
+\contentsline {section}{Problem 2}{7}{section*.12}
+\contentsline {subsection}{a}{7}{section*.13}
+\contentsline {subsection}{b}{7}{section*.14}
+\contentsline {subsection}{c}{8}{section*.15}
+\contentsline {section}{Problem 3}{8}{section*.16}
+\contentsline {section}{Problem 4}{8}{section*.17}
+\contentsline {subsection}{a}{8}{section*.18}
+\contentsline {subsection}{b}{9}{section*.19}
+\contentsline {subsection}{c}{9}{section*.20}
+\contentsline {subsection}{d}{9}{section*.21}
+\contentsline {subsection}{e}{9}{section*.22}
+\contentsline {subsection}{f}{10}{section*.23}
+\contentsline {subsection}{g}{10}{section*.24}
+\contentsline {subsection}{h}{11}{section*.25}
+\contentsline {section}{Problem 5}{11}{section*.26}
+\contentsline {section}{Problem 6}{11}{section*.27}
+\contentsline {subsection}{b}{11}{section*.28}
+\contentsline {subsubsection}{c}{12}{section*.29}
+\contentsline {subsubsection}{d}{12}{section*.30}
+\contentsline {subsection}{e}{12}{section*.31}
