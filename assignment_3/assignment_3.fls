@@ -139,7 +139,6 @@ INPUT /usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/se-ascii-print.def
 INPUT /usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/se-ascii-print.def
 INPUT /home/bryan/Coding/CS299/assignment_3/assignment_3.toc
 INPUT /home/bryan/Coding/CS299/assignment_3/assignment_3.toc
-OUTPUT /home/bryan/Coding/CS299/assignment_3/assignment_3.toc
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
@@ -148,5 +147,15 @@ INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+OUTPUT /home/bryan/Coding/CS299/assignment_3/assignment_3.toc
+INPUT /home/bryan/Coding/CS299/assignment_3/KMeansCompression.m
+INPUT /home/bryan/Coding/CS299/assignment_3/KMeansCompression.m
+INPUT /home/bryan/Coding/CS299/assignment_3/KMeansCompression.m
+INPUT /home/bryan/Coding/CS299/assignment_3/mandrill-large.png
+INPUT /home/bryan/Coding/CS299/assignment_3/compressed-large-10.png
+INPUT /home/bryan/Coding/CS299/assignment_3/compressed-large.png
+INPUT /home/bryan/Coding/CS299/assignment_3/mandrill-small.png
+INPUT /home/bryan/Coding/CS299/assignment_3/compressed-small-10.png
+INPUT /home/bryan/Coding/CS299/assignment_3/compressed-small.png
 INPUT /home/bryan/Coding/CS299/assignment_3/assignment_3.aux
 INPUT /home/bryan/Coding/CS299/assignment_3/assignment_3.out
